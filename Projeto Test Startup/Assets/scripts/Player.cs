@@ -46,6 +46,21 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            // Verifica se o jogador está acima do inimigo para matá-lo
+            if (transform.position.y > collision.transform.position.y)
+            {
+                Destroy(collision.gameObject);
+            }
+            else
+            {
+                // Jogador morre
+                Destroy(gameObject);
+                // Aqui você pode adicionar lógica para reiniciar o jogo ou mostrar tela de game over
+            }
+        }
+
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGround = true;
