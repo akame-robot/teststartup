@@ -5,7 +5,7 @@ using UnityEngine;
 public class Boss : MonoBehaviour
 {
     private int life = 400;
-    public GameObject message;
+    public GameObject message, message2;
     private bool isDelay = false;
     public float delayTime = 1.5f;
     private float delayTimer = 0f;
@@ -28,6 +28,7 @@ public class Boss : MonoBehaviour
         }
         if(fullLife == 0)
         {
+            message2.SetActive(false);
             message.SetActive(true);
             Destroy(this.gameObject);
         }
