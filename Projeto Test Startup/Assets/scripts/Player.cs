@@ -10,6 +10,9 @@ public class Player : MonoBehaviour
     public float playerVelocity, jumpForce;
     public float gravityForce;
     public bool isGround = true;
+    public GameObject cannon;
+    public GameObject bulletOut;
+    public GameObject bullets;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +28,10 @@ public class Player : MonoBehaviour
 
     public void PlayerMove()
     {
-
+        if(cannon != null && Input.GetKeyDown(KeyCode.F))
+        {
+            Instantiate(bullets, bulletOut.transform.position, Quaternion.identity);
+        }
         if (Input.GetKey(KeyCode.A))
         {
             player.transform.Translate(new Vector2(-1, 0) * playerVelocity * Time.deltaTime);

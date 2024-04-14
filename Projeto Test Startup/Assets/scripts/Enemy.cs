@@ -44,4 +44,11 @@ public class Enemy : MonoBehaviour
     {
         Instantiate(iten, transform.position, Quaternion.identity);
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Bullets"))
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }
