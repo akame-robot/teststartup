@@ -37,4 +37,9 @@ public class Menu : MonoBehaviour
         yield return new WaitForSeconds(1);
         SceneManager.LoadScene("Stage1");
     }
+
+    public void CloseGame()
+    {
+        Application.Quit();
+    }
 }
