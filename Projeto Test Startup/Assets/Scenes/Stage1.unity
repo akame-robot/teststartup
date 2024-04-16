@@ -6544,7 +6544,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 353cbc89df825154699ee07916e53cfe, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 4f65987c6a64e894bb60f1e8dddb5792, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.1
   m_Pitch: 1
@@ -27324,7 +27324,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 7
 --- !u!1 &1288263184
 GameObject:
   m_ObjectHideFlags: 0
