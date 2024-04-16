@@ -43,7 +43,7 @@ public class Player : MonoBehaviour
 
     public void PlayerMove()
     {
-        if (cannon.activeSelf && Input.GetKeyDown(KeyCode.F))
+        if (cannon.activeSelf && Input.GetKeyDown(KeyCode.K))
         {
             SoundCannon();
             Instantiate(bullets, bulletOut.transform.position, Quaternion.identity);

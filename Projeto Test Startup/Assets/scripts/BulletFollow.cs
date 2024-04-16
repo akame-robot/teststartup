@@ -21,13 +21,18 @@ public class BulletFollow : MonoBehaviour
     void Update()
     {
         transform.position = Vector2.MoveTowards(transform.position, seedFollow, seedVelocity * Time.deltaTime);
-        Destroy(gameObject, 2f);
+        if ((Vector2)transform.position == seedFollow)
+        {
+            // Destruir a bala
+            Destroy(gameObject);
+        }
     }
 
 
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        
         if (collision.gameObject.TryGetComponent<BossEnemy>(out BossEnemy enemyComponent))
         {
 
