@@ -56,7 +56,8 @@ public class Enemy : MonoBehaviour
             transform.localScale = localScale;
             DeathSound();
             Destroy(this.gameObject,1);
-            GetComponent<Collider>().enabled = false;
+            GetComponent<Collider2D>().enabled = false;
+            rb.isKinematic = true;
         }
         if (collision.gameObject.CompareTag("Bullets"))
         {

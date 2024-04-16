@@ -114,6 +114,7 @@ public class Player : MonoBehaviour
             //}
             if (transform.position.y < collision.transform.position.y)
             {
+                canvas.SetActive(true);
                 Destroy(this.gameObject);
             }
         }
