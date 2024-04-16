@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class Collectable : MonoBehaviour
 {
+    public AudioSource deathSound;
+    public AudioClip somMorte;
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (deathSound == null)
+        {
+            deathSound = GetComponent<AudioSource>();
+        }
     }
 
     // Update is called once per frame
@@ -22,5 +27,14 @@ public class Collectable : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+    private void OnDestroy()
+    {
+        CollectSound();
+    }
+
+    void CollectSound()
+    {
+        deathSound.PlayOneShot(somMorte);
     }
 }

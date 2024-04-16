@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class BossRespawn : MonoBehaviour
 {
+    public GameObject BossRespawnPrefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,7 +15,7 @@ public class BossRespawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (BossRespawnPrefab.activeSelf && Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }

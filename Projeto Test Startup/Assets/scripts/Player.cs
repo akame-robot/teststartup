@@ -14,12 +14,22 @@ public class Player : MonoBehaviour
     public GameObject bulletOut;
     public GameObject bullets;
 
+    public AudioSource audioSource;
+    public AudioSource deathSound;
+    public AudioSource cannonSound;
+    public AudioClip somPulo, somMorte, somCannon;
+
+
     public GameObject gear1, gear2, gear3, gear4, gear5;
-    
+
 
     // Start is called before the first frame update
     void Start()
     {
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -27,13 +37,15 @@ public class Player : MonoBehaviour
     void Update()
     {
         PlayerMove();
- 
+
+
     }
 
     public void PlayerMove()
     {
-        if (cannon != null && Input.GetKeyDown(KeyCode.F))
+        if (cannon.activeSelf && Input.GetKeyDown(KeyCode.F))
         {
+            SoundCannon();
             Instantiate(bullets, bulletOut.transform.position, Quaternion.identity);
         }
         if (Input.GetKey(KeyCode.A))
@@ -50,6 +62,7 @@ public class Player : MonoBehaviour
         {
             rb.velocity = new Vector3(0, jumpForce, 0);
             isGround = false;
+            ReproduzirSomDePulo();
         }
         rb.AddForce(new Vector3(0, -gravityForce, 0));
     }
@@ -121,4 +134,26 @@ public class Player : MonoBehaviour
 
 
     }
+    private void OnDestroy()
+    {
+        ReproduzirSomDeMorte(); 
+    }
+    void ReproduzirSomDePulo()
+    {
+        if (somPulo != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(somPulo);
+        }
+    }
+
+    void ReproduzirSomDeMorte()
+    {   
+            deathSound.PlayOneShot(somMorte);
+    }
+    void SoundCannon()
+    {
+        cannonSound.PlayOneShot(somCannon);
+    }
+
+
 }

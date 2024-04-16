@@ -7,6 +7,7 @@ public class RespawnScene : MonoBehaviour
 {
     private static RespawnScene instance;
     private AudioSource audioSource;
+    public GameObject respawn;
     private void Awake()
     {
         if (instance == null)
@@ -27,7 +28,7 @@ public class RespawnScene : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (respawn.activeSelf && Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene("Stage1");
         }

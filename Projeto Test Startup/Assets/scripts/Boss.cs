@@ -13,7 +13,10 @@ public class Boss : MonoBehaviour
     private bool invoking = true;
 
     public GameObject enemy, enemySpawn;
-    public GameObject respawn;
+    public GameObject respawn, bossRespawn;
+
+    public AudioSource deathSound;
+    public AudioClip somMorte;
 
 
     private void Awake()
@@ -23,7 +26,10 @@ public class Boss : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        if (deathSound == null)
+        {
+            deathSound = GetComponent<AudioSource>();
+        }
         healthBar.UpdateHealthBar(life, fullLife);
         fullLife = life;
         StartCoroutine(Spawnenemy());
@@ -37,6 +43,7 @@ public class Boss : MonoBehaviour
     {
         //aqui onde tudo começa para tomar dano
         fullLife -= damage;
+        DeathSound();
         healthBar.UpdateHealthBar(fullLife, damage);
        
 
@@ -47,6 +54,7 @@ public class Boss : MonoBehaviour
             message2.SetActive(false);
             message.SetActive(true);
             respawn.SetActive(true);
+            bossRespawn.SetActive(false);
             bossName.SetActive(false);
             Destroy(this.gameObject);
         }
@@ -70,5 +78,10 @@ public class Boss : MonoBehaviour
             Instantiate(enemy, enemySpawn.transform.position, Quaternion.identity);
         }
 
+    }
+
+    void DeathSound()
+    {
+        deathSound.PlayOneShot(somMorte);
     }
 }

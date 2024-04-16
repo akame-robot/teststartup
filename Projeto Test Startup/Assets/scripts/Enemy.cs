@@ -11,10 +11,17 @@ public class Enemy : MonoBehaviour
     private bool isDead = false;
     public GameObject iten;
 
-    
+    public AudioSource deathSound;
+    public AudioClip somMorte;
+
+
 
     void Start()
     {
+        if (deathSound == null)
+        {
+            deathSound = GetComponent<AudioSource>();
+        }
         rb = GetComponent<Rigidbody2D>();
         // Inicialmente, o inimigo se move para o primeiro ponto de patrulha
         MoveToNextPatrolPoint();
@@ -47,6 +54,7 @@ public class Enemy : MonoBehaviour
         {
             Vector3 localScale = new Vector3(1, -0.5f, 1);
             transform.localScale = localScale;
+            DeathSound();
             Destroy(this.gameObject,1);
             GetComponent<Collider>().enabled = false;
         }
@@ -54,5 +62,10 @@ public class Enemy : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+
+    void DeathSound()
+    {
+        deathSound.PlayOneShot(somMorte);
     }
 }
