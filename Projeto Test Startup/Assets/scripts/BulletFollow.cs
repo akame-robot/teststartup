@@ -8,6 +8,9 @@ public class BulletFollow : MonoBehaviour
 
     private Vector2 seedFollow;
 
+    private int damage = 10;
+    private int bossDamage = 20;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,8 +24,25 @@ public class BulletFollow : MonoBehaviour
         Destroy(gameObject, 2f);
     }
 
+
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.TryGetComponent<BossEnemy>(out BossEnemy enemyComponent))
+        {
+
+            enemyComponent.TakeDamage(damage);
+            Destroy(this.gameObject);
+
+        }
+
+        if (collision.gameObject.TryGetComponent<Boss>(out Boss bossComponent))
+        {
+
+            bossComponent.TakeDamage(bossDamage);
+            Destroy(this.gameObject);
+
+        }
         if (collision.gameObject.CompareTag("Ground"))
         {
             Destroy(this.gameObject);

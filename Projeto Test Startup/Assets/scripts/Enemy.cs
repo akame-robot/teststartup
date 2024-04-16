@@ -11,6 +11,8 @@ public class Enemy : MonoBehaviour
     private bool isDead = false;
     public GameObject iten;
 
+    
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -39,13 +41,15 @@ public class Enemy : MonoBehaviour
         // Incrementa o índice para o próximo ponto de patrulha ou reinicia se chegarmos ao final
         currentPatrolPointIndex = (currentPatrolPointIndex + 1) % patrolPoints.Length;
     }
-
-    private void OnDestroy()
-    {
-        Instantiate(iten, transform.position, Quaternion.identity);
-    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.CompareTag("Player") && transform.position.y < collision.transform.position.y)
+        {
+            Vector3 localScale = new Vector3(1, -0.5f, 1);
+            transform.localScale = localScale;
+            Destroy(this.gameObject,1);
+            GetComponent<Collider>().enabled = false;
+        }
         if (collision.gameObject.CompareTag("Bullets"))
         {
             Destroy(this.gameObject);

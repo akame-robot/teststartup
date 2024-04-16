@@ -11,6 +11,13 @@ TagManager:
   - BulletDie
   - wall
   - boss
+  - Gear1
+  - Gear2
+  - Gear3
+  - Gear4
+  - Gear5
+  - Ground2
+  - BossBullets
   layers:
   - Default
   - TransparentFX
