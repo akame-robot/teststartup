@@ -29,6 +29,16 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        //RaycastHit hit;
+        //if (Physics.Raycast(transform.position, -transform.up, out hit))
+        //{
+        //    // Verifica se o raio atingiu o jogador
+        //    if (hit.collider.CompareTag("Player"))
+        //    {
+        //        // Destrói o inimigo se o jogador estiver em cima dele
+        //        Destroy(gameObject);
+        //    }
+        //}
         // Movimenta o inimigo na direção do ponto de patrulha atual
         if (!isDead)
         {
@@ -55,7 +65,7 @@ public class Enemy : MonoBehaviour
             Vector3 localScale = new Vector3(1, -0.5f, 1);
             transform.localScale = localScale;
             DeathSound();
-            Destroy(this.gameObject,1);
+            Destroy(this.gameObject, 1);
             GetComponent<Collider2D>().enabled = false;
             rb.isKinematic = true;
         }

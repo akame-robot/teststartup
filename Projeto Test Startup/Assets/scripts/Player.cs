@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     public AudioSource cannonSound;
     public AudioClip somPulo, somMorte, somCannon;
 
+    private Animator animator;
 
     public GameObject gear1, gear2, gear3, gear4, gear5;
 
@@ -26,6 +27,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         if (audioSource == null)
         {
             audioSource = GetComponent<AudioSource>();
@@ -50,6 +52,7 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.A))
         {
+            animator.SetTrigger("walk");
             player.transform.Translate(new Vector2(-1, 0) * playerVelocity * Time.deltaTime);
         }
 

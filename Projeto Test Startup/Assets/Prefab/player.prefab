@@ -59,8 +59,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2973118388792172126}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 707.5, y: -298.7, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 707.49, y: -298.7, z: 0}
+  m_LocalScale: {x: 3.7932, y: 3.7932, z: 3.7932}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5706597775875001826}
@@ -108,8 +108,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.2262168, a: 1}
+  m_Sprite: {fileID: 7166236263522030466, guid: 552146dbb8bac6f449493bca4b69540f, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -132,18 +132,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.00044244528, y: -0.010986447}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.32, y: 0.32}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.21920332, y: 0.242044}
   m_EdgeRadius: 0
 --- !u!50 &2973118388792172121
 Rigidbody2D:
@@ -188,6 +188,12 @@ MonoBehaviour:
   cannon: {fileID: 8289076604666066162}
   bulletOut: {fileID: 2973118389452890173}
   bullets: {fileID: 5966281998706929633, guid: c88cf143b3e2bc746b801300b2c34a9a, type: 3}
+  audioSource: {fileID: 0}
+  deathSound: {fileID: 0}
+  cannonSound: {fileID: 0}
+  somPulo: {fileID: 0}
+  somMorte: {fileID: 0}
+  somCannon: {fileID: 0}
   gear1: {fileID: 0}
   gear2: {fileID: 0}
   gear3: {fileID: 0}
