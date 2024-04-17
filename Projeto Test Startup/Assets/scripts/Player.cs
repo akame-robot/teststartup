@@ -27,6 +27,8 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //animator.SetBool("isWalk", false);
+        //animator.SetBool("isIdle", true);
         animator = GetComponent<Animator>();
         if (audioSource == null)
         {
@@ -40,7 +42,6 @@ public class Player : MonoBehaviour
     {
         PlayerMove();
 
-
     }
 
     public void PlayerMove()
@@ -52,13 +53,28 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.A))
         {
-            animator.SetTrigger("walk");
+            Vector2 flip = transform.localScale;
+            flip.x = -4.293207f;
+            transform.localScale = flip;
             player.transform.Translate(new Vector2(-1, 0) * playerVelocity * Time.deltaTime);
+            animator.SetBool("isWalking", true);
+        }
+        else
+        {
+            animator.SetBool("isWalking", false);
         }
 
         if (Input.GetKey(KeyCode.D))
         {
+            Vector2 flip = transform.localScale;
+            flip.x = 4.293207f;
+            transform.localScale = flip;
             player.transform.Translate(new Vector2(1, 0) * playerVelocity * Time.deltaTime);
+            animator.SetBool("isWalking", true);
+        }
+        else
+        {
+            animator.SetBool("isWalking", false);
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && isGround)
@@ -72,6 +88,10 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.CompareTag("boss"))
+        {
+            Destroy(this.gameObject);
+        }
         if (collision.gameObject.CompareTag("BossBullets"))
         {
             canvas.SetActive(true);
@@ -137,6 +157,14 @@ public class Player : MonoBehaviour
         }
 
 
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGround = false;
+        }
     }
     private void OnDestroy()
     {
